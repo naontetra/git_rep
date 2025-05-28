@@ -116,6 +116,8 @@ void main() {
 2, ステートクラスとの連携
 @override
   _MyHomePageState createState() => _MyHomePageState();
+  
+StatefulWidget が、その動的な振る舞いを管理するために _MyHomePageState という専用のクラスのインスタンスを作成し、連携する
 ```
 ```
 3，MyAppクラスのstatelessWidgetとして、titleに'Flutterサンプル'をmessageに'サンプル・メッセージ。'を設定

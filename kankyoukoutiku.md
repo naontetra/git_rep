@@ -24,3 +24,13 @@
 
 #### おまけ(Git初心者あるある…だと思う)
 #### 紐づけに成功しても定期的にリポジトリ変更をコミット、プッシュを行わないとGit－Hub内のファイルは更新されないので注意
+
+# Fullter Studio
+[Fullter studio](https://flutterstudio.app/)
+### WebでFullterの制作物のだいたいの外観やプレビュー・コードが見える便利なツール
+#### …がFullterのバージョンによってはエラーや警告が発生し易いので作ったコードに関してはコード合成後AIに添削を頼むのがベターかもしれない
+#### 不具合の例
+#### accentColor:------------(エラー：現在のFullterでは対応していない)
+#### ×:const MyHomePage({Key key}) : super(key: key);  
+○:const MyHomePage({Key? key}) : super(key: key);のコード
+#### 各constの立て方(基本警告だがたまにエラーになる)
