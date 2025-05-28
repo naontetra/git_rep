@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
  Text:テキストの表示を行うためのウィジェット
 ```
 ## Stateクラス
-### StatelessWiget:最初に表示された、変化しない
+### StatelessWiget:最初に表示されたまま変化しない
 ### StatefulsWiget:操作によって変化する
 ### State:状態を扱う為の機能
 
@@ -50,3 +50,119 @@ class ウィジェットクラス extends StatefulWiget {
   @override
   ステートクラス createState() => ステートクラス; 
 }
+```
+### 例題
+
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  final title = 'Flutterサンプル';
+  final message = 'サンプル・メッセージ。';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(
+        title: this.title,
+        message: this.message
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  final String title;
+  final String message;
+  const MyHomePage({
+    Key? key,
+    required this.title,
+    required this.message
+  }): super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Text(
+        widget.message,
+        style: TextStyle(fontSize:32.0),
+      ),
+    );
+  }
+}
+```
+```
+1，メインクラスの設定
+void main() {
+  runApp(const MyApp());
+}
+```
+```
+2, ステートクラスとの連携
+@override
+  _MyHomePageState createState() => _MyHomePageState();
+```
+```
+3，MyAppクラスのstatelessWidgetとして、titleに'Flutterサンプル'をmessageに'サンプル・メッセージ。'を設定
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  final title = 'Flutterサンプル';
+  final message = 'サンプル・メッセージ。';
+｝
+final:これ以上上書きされない(ダイヤモンドは砕けない)
+```
+
+```
+4，homeの設定
+デザインのタイトルには'Flutter Demo'を
+homeの設定として、statelessWidgetのtitleとmessageを指定(this)
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(
+        title: this.title,
+        message: this.message
+      ),
+    );
+  }
+this:子クラスの？
+```
+```
+const MyHomePage({
+    Key? key,
+    required this.title,
+    required this.message
+  }): super(key: key);
+MyAppクラスで設定した値(title:'Flutterサンプル'とmessage:'サンプル・メッセージ。')がMyHomePageクラスに渡される
+```
+```
+5，2で作られた_MyHomePageStateクラスのインスタンスをMyHomePageに保管したtitleとmessageを使って作成
+return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Text(
+        widget.message,
+        style: TextStyle(fontSize:32.0),
+      ),
+    );
+AppBar:Appバーを付けて
+fontSize:32.0 フォントサイズを32で
+```
+
