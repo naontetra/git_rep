@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 
-//テキストの表示方法に付いてのクラス
+//テキストの表示方法についてのクラス
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -84,4 +84,108 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+padding:余白
+EdgeInsets：余白を設定するクラス
+例
+EdgeInsets.all(10.0)：全ての方向が同じ
+EdgeInsets.fromLTRB (左,上,右,下)：順番に各方向に示す値分の余白
+EdgeInsets.oniy (左,上,右,下)：順番に各方向に示す値分の余白(数字省略可、した場合は該当の値が0に)
+EdgeInsets.symmetric(横,縦)：順番に各方向に示す値分の余白
+
+alignment:配置場所を指定するクラス
+alignment: const Alignment(数字,数字)で数字の割合の分だけテキストの位置をずらせる
+配置場所を指定するクラス
 ```
+
+
+## 複数のウィジェットを配置
+### 縦に複数のウィジェットを配置
+```
+// Column:縦に複数のウィジェットを並べる
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('App Name'),
+      ),
+      body:
+      Column(  //Column:縦に複数のウィジェットを並べる
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "One",
+              style: TextStyle(fontSize:32.0,
+                  color: const Color(0xff000000),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Roboto"),
+            ),
+            Text(
+              "Two",
+              style: TextStyle(fontSize:32.0,
+                  color: const Color(0xff000000),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Roboto"),
+            ),
+            Text(
+              "Three",
+              style: TextStyle(fontSize:32.0,
+                  color: const Color(0xff000000),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Roboto"),
+            )
+          ]
+      ),
+    );
+  }
+}
+
+```
+
+### 横に複数のウィジェットを並べる
+```
+// Row:複数のウィジェットを横に並べる
+class _MyHomePageState extends State<MyHomePage> {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('App Name'),
+        ),
+        body:
+          Row(//複数のウィジェットを横に並べる
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+              "One",
+                style: TextStyle(fontSize:32.0,
+                color: const Color(0xff000000),
+                fontWeight: FontWeight.w400,
+                fontFamily: "Roboto"),
+              ),
+              Text(
+              "Two",
+                style: TextStyle(fontSize:32.0,
+                color: const Color(0xff000000),
+                fontWeight: FontWeight.w400,
+                fontFamily: "Roboto"),
+              ),
+              Text(
+              "Three",
+                style: TextStyle(fontSize:32.0,
+                color: const Color(0xff000000),
+                fontWeight: FontWeight.w400,
+                fontFamily: "Roboto"),
+              )
+            ]
+          ),
+      );
+    }
+    void fabPressed() {}
+
+}
+
