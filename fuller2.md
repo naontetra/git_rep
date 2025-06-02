@@ -61,8 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            TextButton(//ボタンのUIの基本
-              onPressed: _buttonPressed,
+            TextButton(//ボタンのUIの基本ここから差し替え
+              onPressed: _buttonPressed,//ボタンを押したらというメソッド
               child: const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
@@ -82,12 +82,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+//標準的なジャンケン？の表示コード
+//ボタンを押すとランダムでグー、チョキ、パーを表示
 ```
 
 ## テキストボタンをアンドロイドアイコンに差し替え
 ```
 TextButton(
-  onPressed:buttonPressed,
+  onPressed:buttonPressed,//ボタンを押したら
   child: Padding(
     padding: EdgeInsets.all(10.0),
     child:Icon (
@@ -97,3 +100,59 @@ TextButton(
   )
 )
 ```
+
+## ElevatedButton
+#### ボタンが少し立体的に表示される
+```
+ElevatedButton(
+  onPressed:buttonPressed,
+  child: Padding(
+    padding: EdgeInsets.all(10.0),
+    child:Icon (
+      Icons.android,
+      size: 50.0,
+    )
+  )
+)
+```
+## アイコンボタン
+#### アイコンをボタンに出来る
+```
+conButton(
+  icon: const Icon(Icons.insert_emoticon),
+  //icon:表示するアイコン
+  iconSize: 100.0, //アイコンのサイズ(doubleで)
+  color: Colors.red, //アイコンの色
+  onPressed:buttonPressed, //クリックしたときに実行するメソッド
+)
+```
+
+## フローティングアクションボタン
+#### 画面の右下に自動でボタンを追加
+```
+FloatingActionButton(
+  child: Icon(Icons.android),
+  onPressed: buttonPressed
+),
+```
+
+## ロウマテリアルボタン
+#### いろいろ細かい設定できる
+##### テーマの影響を受けない為、統一感のあるUIを作成する時は注意
+```
+RawMaterialButton(
+  fillColor: Colors.white, //背景色
+  elevation: 10.0, //ボタンの高さ(影の幅)
+  // highlightColor:クリックしてハイライトした時の色
+  // splashColor:クリックされたことを表す効果として使われる色
+  // highlightElevation:クリックしたときのボタンの高さ(影の幅)
+  padding: EdgeInsets.all(10.0),
+  child: Text(
+      "Push me!",
+      style: TextStyle(fontSize:32.0,
+      color: const Color(0xff000000),
+      fontWeight: FontWeight.w400,
+      fontFamily: "Roboto"),
+    ),
+  onPressed: buttonPressed
+),
