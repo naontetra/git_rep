@@ -122,22 +122,23 @@ void resultAlert(String value) {//ダイアログ内のボタンを押した結�
 ```
 
 ## シンプルダイアログ
+### pop upメニューから選択肢が選べる
 ```
-void buttonPressed(){
+void buttonPressed(){//buttonPressedで出てくる
   showDialog(
     context: context,
     builder: (BuildContext context) => SimpleDialog(
       title: const Text('Select assignment'),
       children: <Widget>[
-        SimpleDialogOption(
+        SimpleDialogOption(//シンプルダイアログの内容1
           onPressed: () => Navigator.pop<String>(context, 'One'),
           child: const Text('One'),
         ),
-        SimpleDialogOption(
+        SimpleDialogOption(//シンプルダイアログの内容2
           onPressed: () => Navigator.pop<String>(context, 'Two'),
           child: const Text('Two'),
         ),
-        SimpleDialogOption(
+        SimpleDialogOption(//シンプルダイアログの内容3
           onPressed: () => Navigator.pop<String>(context, 'Three'),
           child: const Text('Three'),
         ),

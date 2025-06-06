@@ -425,4 +425,85 @@ DropdownButton<型>(
   style: TextStyle(テキストスタイル詳細),
   items: <DropdownMenuItem<String>>[メニュー内のアイテム詳細]
 )
- ```             
+ ``` 
+## PopupMenuButton(縦三点)
+#### DropdownBottonに似た物
+##### DropdownBottonインスタンスを差し替え
+ ```
+ Align(alignment: Alignment.centerRight,
+  child: PopupMenuButton(
+    onSelected: (String value)=> popupSelected(value),
+    itemBuilder: (BuildContext context) =>
+    <PopupMenuEntry<String>>[
+      const PopupMenuItem( child: const Text("One"), value: "One",),
+      const PopupMenuItem( child: const Text("Two"), value: "Two",),
+      const PopupMenuItem( child: const Text("Three"), value: "Three",),
+    ],
+  ),
+),
+
+```
+# Slider
+### (ボリューム調整や動画サイトで使われるスライドして値を設定するやつ)
+```
+ class _MyHomePageState extends State<MyHomePage> {
+  static var _message = 'ok.';
+  static var _value = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('App Name'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
+                _message,
+                style: TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "Roboto"),
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.all(10.0),
+            ),
+
+            Slider(
+              onChanged: sliderChanged,
+              min: 0.0,
+              max: 100.0,
+              divisions: 20,
+              value:_value,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void sliderChanged(double value){
+    setState(() {
+      _value = value.floorToDouble();
+      _message = 'set value: $_value';
+    });
+  }
+}
+```
+```
+Slider(
+  onChanged: sliderChanged,:変更時の処理
+  min: 0.0,：最小値
+  max: 100.0,：最大値
+  divisions: 20,:分割数(min～maxを何分割するか？)
+  value:_value,：現在選択されている値
+),
+```          
