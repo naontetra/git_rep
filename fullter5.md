@@ -221,7 +221,7 @@ ListView(
   children: <Widget>[リスト]
 )
 ```
-## ListTitle
+## ListTile
 ### ListViewに専用のウィジェットを付けたもの
 #### 例)ListViewをクリックするとアクションがおきる
 
@@ -299,4 +299,87 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 ```
+```
+ListTileの基本形
+leading: const Icon(Icons.home, size:32),//アイコンを設定
+  title: const Text('third item',//アイコンとなるテキスト
+    style: TextStyle(fontSize: 28)),
+  selected: _index == 3,//
+  onTap: () {
+    _index = 3;
+    tapTile();//このメソッドを実行
+  },
+```
 
+## SingleChildScrollview
+### ウィジェットの大きさに併せて自動でスクロールバーを追加
+```
+class _MyHomePageState extends State<MyHomePage> {
+
+ @override
+ Widget build(BuildContext context) {
+   return Scaffold(
+
+     appBar: AppBar(
+       title: Text('My App'),
+     ),
+
+     body: SingleChildScrollView(
+       child: Column(
+           mainAxisSize: MainAxisSize.min,
+           mainAxisAlignment: MainAxisAlignment.spaceAround,
+           children: <Widget>[
+             Container(
+               color: Colors.blue,
+               height: 120.0,
+               child: const Center(
+                 child: Text('One',
+               style: const TextStyle(fontSize: 32.0)),
+               ),
+             ),
+             Container(
+               color:Colors.white,
+               height: 120.0,
+               child: const Center(
+                 child: Text('Two',
+               style: const TextStyle(fontSize: 32.0)),
+               ),
+             ),
+             Container(
+               color: Colors.blue,
+               height: 120.0,
+               child: const Center(
+                 child: Text('Three',
+               style: const TextStyle(fontSize: 32.0)),
+               ),
+             ),
+             Container(
+               color:Colors.white,
+               height: 120.0,
+               child: const Center(
+                 child: Text('Four',
+               style: const TextStyle(fontSize: 32.0)),
+               ),
+             ),
+             Container(
+               color: Colors.blue,
+               height: 120.0,
+               child: const Center(
+                 child: Text('Five',
+               style: const TextStyle(fontSize: 32.0)),
+               ),
+             ),
+           ],
+         ),
+       ),
+   );
+ }
+
+}
+```
+```
+基本形
+SingleChildScrollView(
+   child:ウィジェット
+) 
+```
